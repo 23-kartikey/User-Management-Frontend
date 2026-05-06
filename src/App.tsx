@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import "./App.css";
 
 type User = {
   id: string,
@@ -48,7 +49,7 @@ type ListProps = {
 function List({users, removeUser}: ListProps){
 
   return(
-    <ul>
+    <ul className="user-list">
     {
       users.map(user=>(
         <ListItem key= {user.id} item={user} removeUser={removeUser} />
