@@ -33,10 +33,10 @@ function App(){
   }
 
   return(
-    <>
+    <div className="app">
     <List users={users} removeUser={removeUser} />
     <AddUserButton addUsers={addUsers} />
-    </>
+    </div>
   );
 
 }
