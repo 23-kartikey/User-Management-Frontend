@@ -25,3 +25,8 @@
   background-color: green;
   color: white;
 }
+
+.user-input{
+  padding: 8px;
+  margin-right: 10px;
+}

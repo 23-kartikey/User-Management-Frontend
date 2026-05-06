@@ -94,7 +94,7 @@ function AddUserButton({addUsers}: AddUserButtonProps){
 
   return(
     <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} value={text} />
+      <input className="user-input" onChange={handleChange} value={text} />
       <button className="add-btn" type="submit">Add User</button>
     </form>
   );
