@@ -49,6 +49,7 @@ type ListProps = {
 function List({users, removeUser}: ListProps){
 
   return(
+    <div className="list-container">
     <ul className="user-list">
     {
       users.map(user=>(
@@ -56,6 +57,7 @@ function List({users, removeUser}: ListProps){
       ))
     }
     </ul>
+    </div>
   );
 
 }
@@ -68,7 +70,6 @@ type ListItemProps = {
 function ListItem({item, removeUser}: ListItemProps){
   return(
     <li className="user-item">{item.name}
-    &nbsp;
     <RemoveItemButton id={item.id} removeUser={removeUser} />
     </li>
   );
