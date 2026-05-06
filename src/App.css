@@ -15,3 +15,13 @@
   border: none;
   cursor: pointer;
 }
+
+.remove-btn{
+  background-color: crimson;
+  color: white;
+}
+
+.add-btn{
+  background-color: green;
+  color: white;
+}
