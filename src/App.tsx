@@ -67,7 +67,7 @@ type ListItemProps = {
 
 function ListItem({item, removeUser}: ListItemProps){
   return(
-    <li>{item.name}
+    <li className="user-item">{item.name}
     &nbsp;
     <RemoveItemButton id={item.id} removeUser={removeUser} />
     </li>
