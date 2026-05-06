@@ -7,6 +7,8 @@
   background-color: lightgrey;
   padding: 20px;
   list-style: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gray;
 }
 
 .user-item{
@@ -19,6 +21,7 @@
   padding: 5px 10px;
   border: none;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .remove-btn{
@@ -26,9 +29,17 @@
   color: white;
 }
 
+.remove-btn:hover{
+  opacity: 0.85;
+}
+
 .add-btn{
   background-color: green;
   color: white;
+}
+
+.add-btn:hover{
+  opacity: 0.85;
 }
 
 .user-input{
