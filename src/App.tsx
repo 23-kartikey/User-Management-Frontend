@@ -95,7 +95,7 @@ function AddUserButton({addUsers}: AddUserButtonProps){
   return(
     <form onSubmit={handleSubmit}>
       <input onChange={handleChange} value={text} />
-      <button type="submit">Add User</button>
+      <button className="add-btn" type="submit">Add User</button>
     </form>
   );
 }
@@ -108,7 +108,7 @@ type RemoveUserProps = {
 
 function RemoveItemButton({removeUser, id}: RemoveUserProps){
   return(
-    <button onClick={()=>removeUser(id)}>Remove User</button>
+    <button className="remove-btn" onClick={()=>removeUser(id)}>Remove User</button>
   )
 }
 
