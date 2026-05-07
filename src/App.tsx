@@ -71,7 +71,6 @@ const List=memo(({users, removeUser}: ListProps)=>{
     </ul>
   );
 });
-ṇ
 type ListItemProps = {
   item: User,
   removeUser: (user: User)=>void
