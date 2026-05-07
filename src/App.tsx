@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css";
 
@@ -37,9 +37,9 @@ function App(){
     setText('');
   }
 
-  function removeUser(item: User){
+  const removeUser=useCallback((item: User)=>{
     setUsers(users.filter((user)=>user.id!==item.id));
-  }
+  }, [users]);
 
   return(
     <div className="list-container">
@@ -57,7 +57,7 @@ type ListProps = {
   removeUser: (user: User)=>void
 }
 
-function List({users, removeUser}: ListProps){
+const List=memo(({users, removeUser}: ListProps)=>{
 
   console.log("Render: List")
 
@@ -70,15 +70,14 @@ function List({users, removeUser}: ListProps){
     }
     </ul>
   );
-
-}
+});
 
 type ListItemProps = {
   item: User,
   removeUser: (user: User)=>void
 }
 
-function ListItem({item, removeUser}: ListItemProps){
+const ListItem=memo(({item, removeUser}: ListItemProps)=>{
 
   console.log("Render: ListItem");
   return(
@@ -86,6 +85,6 @@ function ListItem({item, removeUser}: ListItemProps){
     <button className="remove-btn" type="button" onClick={()=>removeUser(item)}>Remove</button>
     </li>
   );
-}
+});
 
 export default App;
