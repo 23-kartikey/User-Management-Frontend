@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css";
 
@@ -8,6 +8,8 @@ type User = {
 }
 
 function App(){
+
+  console.log("Render: App");
 
   const [users, setUsers]=useState([
     {
@@ -24,18 +26,27 @@ function App(){
     }
   ]);
 
-  function addUsers(newUser: User){
-    setUsers([...users, newUser]);
+  const [text, setText]=useState('');
+
+  const handleChange=(e: React.ChangeEvent<HTMLInputElement>)=>{
+    setText(e.target.value);
   }
 
-  function removeUser(id: string){
-    setUsers(users.filter((user)=>user.id!==id));
+  function addUsers(){
+    setUsers([...users, {id: uuidv4(), name: text}]);
+    setText('');
+  }
+
+  function removeUser(item: User){
+    setUsers(users.filter((user)=>user.id!==item.id));
   }
 
   return(
-    <div className="app">
+    <div className="list-container">
+      <h1>User List</h1>
     <List users={users} removeUser={removeUser} />
-    <AddUserButton addUsers={addUsers} />
+    <input className="user-input" type="text" onChange={handleChange} value={text} />
+    <button className="add-btn" onClick={addUsers}>Add</button>
     </div>
   );
 
@@ -43,13 +54,14 @@ function App(){
 
 type ListProps = {
   users: User[],
-  removeUser: (id: string)=>void
+  removeUser: (user: User)=>void
 }
 
 function List({users, removeUser}: ListProps){
 
+  console.log("Render: List")
+
   return(
-    <div className="list-container">
     <ul className="user-list">
     {
       users.map(user=>(
@@ -57,60 +69,23 @@ function List({users, removeUser}: ListProps){
       ))
     }
     </ul>
-    </div>
   );
 
 }
 
 type ListItemProps = {
   item: User,
-  removeUser: (id:string)=>void
+  removeUser: (user: User)=>void
 }
 
 function ListItem({item, removeUser}: ListItemProps){
+
+  console.log("Render: ListItem");
   return(
     <li className="user-item">{item.name}
-    <RemoveItemButton id={item.id} removeUser={removeUser} />
+    <button className="remove-btn" type="button" onClick={()=>removeUser(item)}>Remove</button>
     </li>
   );
-}
-
-type AddUserButtonProps = {
-  addUsers: ((newUser: User)=>void)
-}
-
-function AddUserButton({addUsers}: AddUserButtonProps){
-
-  const [text, setText]=useState('');
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>){
-    setText(e.target.value);
-  }
-
-  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>){
-    e.preventDefault();
-    addUsers({id: uuidv4(), name: text});
-    setText('');
-  }
-
-  return(
-    <form onSubmit={handleSubmit}>
-      <input className="user-input" onChange={handleChange} value={text} />
-      <button className="add-btn" type="submit">Add User</button>
-    </form>
-  );
-}
-
-type RemoveUserProps = {
-  removeUser: (id: string)=>void,
-  id: string
-}
-
-
-function RemoveItemButton({removeUser, id}: RemoveUserProps){
-  return(
-    <button className="remove-btn" onClick={()=>removeUser(id)}>Remove User</button>
-  )
 }
 
 export default App;

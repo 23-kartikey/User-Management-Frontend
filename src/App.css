@@ -1,13 +1,11 @@
 body {
   background-color: #f4f4f4;
-}
-
-.app{
-  width: 400px;
-  margin: 50px auto;
+  font-family: Arial, sans-serif;
 }
 
 .list-container{
+  width: 300px;
+  margin: 50px auto;
   background-color:white;
   padding: 20px;
   border-radius: 12px;
@@ -23,9 +21,8 @@ body {
 .user-item{
   padding: 12px;
   border-bottom: 1px solid #ddd;
-
   display: flex;
-  justify-content: space-betweeen;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -35,8 +32,9 @@ body {
   padding: 5px 10px;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 0 3px black;
+  transition: 0.2s;
 }
 
 .remove-btn{
@@ -45,7 +43,7 @@ body {
 }
 
 .remove-btn:hover{
-  opacity: 0.85;
+  opacity: 0.90;
 }
 
 .add-btn{
@@ -58,8 +56,26 @@ body {
 }
 
 .user-input{
-  padding: 5px 8px;
-  margin-right: 10px;
-  background-color: bisque;
-  color: black;
+  margin-top: 20px;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-left: 25px;
+}
+
+.user-input:focus{
+  outline: none;
+  border-color: dodgerblue;
+}
+
+.user-form{
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 20px;
 }
