@@ -38,8 +38,8 @@ function App(){
   }
 
   const removeUser=useCallback((item: User)=>{
-    setUsers(users.filter((user)=>user.id!==item.id));
-  }, [users]);
+    setUsers(prevUsers=>prevUsers.filter((user)=>user.id!==item.id));
+  }, []);
 
   return(
     <div className="list-container">
@@ -71,7 +71,7 @@ const List=memo(({users, removeUser}: ListProps)=>{
     </ul>
   );
 });
-
+ṇ
 type ListItemProps = {
   item: User,
   removeUser: (user: User)=>void
